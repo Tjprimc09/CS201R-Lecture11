@@ -1,8 +1,7 @@
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -26,8 +25,8 @@ public class Main {
 
 
         //PRINT OBJECTS 
-         System.out.printf(s1.printPerson());
-         System.out.printf(s2.printPerson());
+         System.out.print(s1);
+         System.out.print(s2);
 
         people.add(s1);
         people.add(s2);
@@ -41,41 +40,38 @@ public class Main {
                 System.out.println("Input is not valid");
             }
             
-            System.out.println("\nPRINT ALL PEOPLE");
+            System.out.println("\nPRINT ALL PEOPLE USING OBJECT PRINTPERSON");
             for (Person p : people){
-                System.out.printf(p.printPerson());
+                System.out.print(p);
             }
             System.out.println("Total People:   " + Person.totalPeople);
             System.out.println("Total Students: " + Student.totalStudent);
 
             System.out.println("\nPRINT ALL PEOPLE USING GETTERS");
             for (Person p : people){
-                System.out.printf(printObjects(p));
+                System.out.print(p);
             }
+
             System.out.println("\nPRINT ONLY STUDENTS");
             //using instanceof to print only
             for (Person p : people){
                 if (p instanceof Student)
-                    System.out.printf(printObjects(p));
+                    System.out.print(p);
             }
             scanner.close();
         }
 
         catch (FileNotFoundException e){
             System.out.println("Unable to open file");
-            return;
         }
          
     }
 
     public static int loadArrayList(ArrayList<Person> people, Scanner input){
 
-        String inputLine;
-        char t;
+        String inputLine, f, l;
         int a;
         double g;
-        String f, l;
-
  
         while (input.hasNextLine()){
             //get the next line of input from the file
@@ -106,8 +102,10 @@ public class Main {
                 try{
                     a = Integer.parseInt(tokens[3]);
                     g = Double.parseDouble(tokens[4]);
-                    Student newPerson = new Student('S',f,l,a,g);
-                    people.add(newPerson);
+                    //Student newPerson = new Student('S',f,l,a,g);
+                    //people.add(newPerson);
+                    Person newPerson2 = new Student('S',f,l,a,g);
+                    people.add(newPerson2);
                 }
                 catch(NumberFormatException e){
                     System.out.println("Error in the line: " + inputLine);
@@ -118,13 +116,6 @@ public class Main {
                    
        return 1;
     }
-
-    public static String printObjects(Person p){
-        String out = String.format("%-15s%-15s%5d\n",p.getFName(),p.getLName(), p.getAge());
-        return out;
-    }
-
- 
       
 }
 

@@ -1,6 +1,7 @@
 public class Student extends Person {
-    private    double gpa;
 
+    private  double gpa;
+        
     Student(){
         super();
         type = 'S';
@@ -20,8 +21,9 @@ public class Student extends Person {
     public void setGPA(double g){this.gpa = g;}
 
     //create the print method
-    public String printPerson(){
-        String out = String.format("%-15s%-15s%5d%10.2f\n",fname,lname, age,gpa);
+    @Override
+    public String toString(){
+        String out = String.format("%-5s%-15s%-15s%5d%10.2f\n",type,fname,lname, age, gpa);
         return out;
     }
 
